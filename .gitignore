@@ -1,0 +1,5 @@
+.camel*
+*.pem
+.terraform*
+*.tfstate
+.localstack

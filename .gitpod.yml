@@ -1,0 +1,23 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Setup TF Remote Backend (S3 Bucket and DynamoDB Table)
+    command: |
+      make start-localstack
+      make setup-tf-backend
+      make create-test-secret
+      gp sync-done setup-tf-backend
+  - name: Terraform Init
+    command: |
+      make tf-init
+      gp sync-await setup-tf-backend
+      gp sync-done tf-init
+  - name: Terraform Apply
+    command: |
+      make tf-apply
+      gp sync-await tf-init
+
+vscode:
+  extensions:
+    - hashicorp.terraform
