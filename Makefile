@@ -4,8 +4,8 @@ help: ## Display this help.
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_0-9-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 create-s3-tf-backend: ## Create Bucket S3 for TF Remote Backend
-	@aws s3api create-bucket \
-	--bucket terraform-state \
+	@aws s3 mb s3://terraform-state \
+	--region eu-west-3 \
 	--endpoint http://localhost:4566 > /dev/null 2>&1
 
 create-test-secret: ## Create Test Secret
@@ -26,12 +26,11 @@ create-dynamodb-tf-state-locking: ## Create DynamoDB Table for TF State Locking
 	--endpoint http://localhost:4566 > /dev/null 2>&1
 
 setup-tf-backend: ## Setup TF Remote Backend (S3 Bucket and DynamoDB Table)
-	@$(MAKE) create-s3-tf-backend
-	@$(MAKE) create-dynamodb-tf-state-locking
+	@$(MAKE) -s create-s3-tf-backend
+	@$(MAKE) -s create-dynamodb-tf-state-locking
 
 start-localstack: ## Start Localstack
-	@docker compose -f compose.localstack.yml up -d
-	@sleep 2
+	@docker compose -f compose.localstack.yml up -d --wait
 
 tf-init: ## Terraform Init phase
 	@terraform init
