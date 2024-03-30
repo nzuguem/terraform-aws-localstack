@@ -1,4 +1,5 @@
 .camel*
+.idea
 *.pem
 .terraform*
 *.tfstate
