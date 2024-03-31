@@ -3,11 +3,32 @@ variable "ami" {
   default = "ami-00232bbfe70330a10"
 }
 
-variable "instance-type" {
+variable "instance_type" {
   type = string
 }
 
 variable "users" {
   type    = string
   default = "kevin,idriss,pores,michelle"
+}
+
+variable "sg_settings" {
+  type = list(object({
+    description = string
+    port        = number
+  }))
+  default = [
+    {
+      description = "Allows SSH access"
+      port        = 22
+    },
+    {
+      description = "Allows HTTP traffic"
+      port        = 80
+    },
+    {
+      description = "Allows HTTPS traffic"
+      port        = 443
+    }
+  ]
 }

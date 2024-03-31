@@ -1,7 +1,7 @@
-output "nginx-ip" {
+output "nginx_ip" {
   value = aws_instance.nginx.public_ip
 }
 
-output "test-secret-arn" {
-  value = data.aws_secretsmanager_secret.test-secret.arn
+output "test_secret_arn" {
+  value = data.aws_secretsmanager_secret.test_secret.arn
 }

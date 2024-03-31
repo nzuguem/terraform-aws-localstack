@@ -3,8 +3,8 @@ services:
     container_name: localstack
     image: localstack/localstack
     ports:
-      - "127.0.0.1:4566:4566"            # LocalStack Gateway
-      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
+      - 127.0.0.1:4566:4566            # LocalStack Gateway
+      - 127.0.0.1:4510-4559:4510-4559  # external services port range
     environment:
       # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
       DEBUG: 0
