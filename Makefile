@@ -49,3 +49,6 @@ tf-validate: ## Validate TF Configuration File
 
 pre-commit-install: ## Install pre-commit Git Hooks
 	@pre-commit install
+
+tflint-init: ## Install TFLint Plugins
+	@tflint --init

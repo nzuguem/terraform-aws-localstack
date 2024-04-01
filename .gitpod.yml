@@ -10,9 +10,10 @@ tasks:
       make tf-init
       make tf-apply
       
-  - name: Pre-commit install
-    command: |
+  - name: Setup Developement Env
+    init: |
       make pre-commit-install
+      make tflint-init
 
 vscode:
   extensions:
