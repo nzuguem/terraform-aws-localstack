@@ -9,6 +9,10 @@ tasks:
       make create-test-secret
       make tf-init
       make tf-apply
+      
+  - name: Pre-commit install
+    command: |
+      make pre-commit-install
 
 vscode:
   extensions:

@@ -23,3 +23,10 @@ pip install --no-cache-dir awscli --upgrade
 pip install --no-cache-dir awscli-local --upgrade
 
 EOF
+
+# Install pre-commit
+RUN <<EOF
+
+pip install --no-cache-dir pre-commit --upgrade
+
+EOF

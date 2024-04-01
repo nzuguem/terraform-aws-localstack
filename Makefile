@@ -46,3 +46,6 @@ tf-format: ## Format TF Configuration File
 
 tf-validate: ## Validate TF Configuration File
 	@terraform validate
+
+pre-commit-install: ## Install pre-commit Git Hooks
+	@pre-commit install

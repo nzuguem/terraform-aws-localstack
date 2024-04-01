@@ -7,6 +7,6 @@ output "test_secret_arn" {
 }
 
 output "users_arns" {
-  value     = local.users_arns[*].iam_user_arn
+  value = local.users_arns[*].iam_user_arn
 }
 
