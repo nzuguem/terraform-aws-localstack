@@ -52,7 +52,7 @@ data "aws_secretsmanager_secret" "test_secret" {
   name = "Test"
 }
 
-module "iam-user" {
+module "iam_user" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-user"
   version                       = "~> 5.37.2"
   create_iam_access_key         = false
