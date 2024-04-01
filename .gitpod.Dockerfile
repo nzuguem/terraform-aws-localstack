@@ -13,6 +13,10 @@ sudo apt-get install terraform
 ## Install Terraform Local
 pip install --no-cache-dir terraform-local --upgrade
 
+## Install TF Tools
+curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+
 EOF
 
 # Install AWS CLI
