@@ -22,4 +22,27 @@ terraform {
     }
   }
 
+  # GitHub Remote Backend -> https://tfstate.dev/
+  # export TF_HTTP_PASSWORD=<your-github-token> or terraform init -backend-config="password=<your-github-token>"
+  /*   backend "http" {
+    address        = "https://api.tfstate.dev/github/v1"
+    lock_address   = "https://api.tfstate.dev/github/v1/lock"
+    unlock_address = "https://api.tfstate.dev/github/v1/lock"
+    lock_method    = "PUT"
+    unlock_method  = "DELETE"
+    username       = "<GitHubOrg>/<GithubRepo>"
+  } */
+
+
+  # GitLab Remote Backend -> https://docs.gitlab.com/ee/user/infrastructure/iac/terraform_state.html
+  # export TF_HTTP_PASSWORD=<your-gitlab-token> or terraform init -backend-config="password=<your-gitlab-token>"
+  /*   backend "http" {
+    address        = "https://gitlab.com/api/v4/projects/<ProjectID>/terraform/state/<StateName>"
+    lock_address   = "https://gitlab.com/api/v4/projects/<ProjectID>/terraform/state/<StateName>/lock"
+    unlock_address = "https://gitlab.com/api/v4/projects/<ProjectID>/terraform/state/<StateName>/lock"
+    lock_method    = "POST"
+    unlock_method  = "DELETE"
+    username       = "<GitlabUserName>"
+  } */
+
 }
