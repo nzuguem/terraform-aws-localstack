@@ -10,7 +10,7 @@ tasks:
       make tf-init
       make tf-apply
       
-  - name: Setup Developement Env
+  - name: Setup Development Env
     init: |
       make pre-commit-install
       make tflint-init

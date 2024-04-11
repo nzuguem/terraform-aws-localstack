@@ -29,4 +29,10 @@ provider "aws" {
     sts            = "http://localhost:4566"
     ec2            = "http://localhost:4566"
   }
+
+  default_tags {
+    tags = {
+      ManagedBy = "Terraform"
+    }
+  }
 }

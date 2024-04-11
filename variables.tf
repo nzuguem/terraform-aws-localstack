@@ -4,7 +4,12 @@ variable "ami" {
 }
 
 variable "instance_type" {
-  type = string
+  type    = string
+  default = ""
+  validation {
+    condition     = var.instance_type != ""
+    error_message = "Instance Type is mandatory"
+  }
 }
 
 variable "users" {

@@ -52,3 +52,15 @@ pre-commit-install: ## Install pre-commit Git Hooks
 
 tflint-init: ## Install TFLint Plugins
 	@tflint --init
+
+setup-env: ## Setup Environment
+	@$(MAKE) start-localstack
+	@$(MAKE) setup-tf-backend
+	@$(MAKE) create-test-secret
+	@$(MAKE) tf-init
+	@$(MAKE) tflint-init
+	@$(MAKE) pre-commit-install
+	@$(MAKE) tf-apply
+
+clean-env: ## Stop Localstack
+	@docker compose -f compose.localstack.yml down
