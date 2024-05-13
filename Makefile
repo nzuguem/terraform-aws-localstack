@@ -26,8 +26,8 @@ create-dynamodb-tf-state-locking: ## Create DynamoDB Table for TF State Locking
 	--endpoint http://localhost:4566 > /dev/null 2>&1
 
 setup-tf-backend: ## Setup TF Remote Backend (S3 Bucket and DynamoDB Table)
-	@$(MAKE) create-s3-tf-backend
-	@$(MAKE) create-dynamodb-tf-state-locking
+	@$(MAKE) -s create-s3-tf-backend
+	@$(MAKE) -s create-dynamodb-tf-state-locking
 
 start-localstack: ## Start Localstack
 	@docker compose -f compose.localstack.yml up -d --wait
@@ -54,13 +54,13 @@ tflint-init: ## Install TFLint Plugins
 	@tflint --init
 
 setup-env: ## Setup Environment
-	@$(MAKE) start-localstack
-	@$(MAKE) setup-tf-backend
-	@$(MAKE) create-test-secret
-	@$(MAKE) tf-init
-	@$(MAKE) tflint-init
-	@$(MAKE) pre-commit-install
-	@$(MAKE) tf-apply
+	@$(MAKE) -s start-localstack
+	@$(MAKE) -s setup-tf-backend
+	@$(MAKE) -s create-test-secret
+	@$(MAKE) -s tf-init
+	@$(MAKE) -s tflint-init
+	@$(MAKE) -s pre-commit-install
+	@$(MAKE) -s tf-apply
 
 clean-env: ## Stop Localstack
 	@docker compose -f compose.localstack.yml down
