@@ -26,26 +26,26 @@ create-dynamodb-tf-state-locking: ## Create DynamoDB Table for TF State Locking
 	--endpoint http://localhost:4566 > /dev/null 2>&1
 
 setup-tf-backend: ## Setup TF Remote Backend (S3 Bucket and DynamoDB Table)
-	@$(MAKE) -s create-s3-tf-backend
-	@$(MAKE) -s create-dynamodb-tf-state-locking
+	@$(MAKE) create-s3-tf-backend
+	@$(MAKE) create-dynamodb-tf-state-locking
 
 start-localstack: ## Start Localstack
 	@docker compose -f compose.localstack.yml up -d --wait
 
-tf-init: ## Terraform Init phase
-	@terraform init
+tf-init: ## Tofu Init phase
+	@tofu init
 
-tf-apply: ## Terraform Apply phase
-	@terraform apply -auto-approve
+tf-apply: ## Tofu Apply phase
+	@tofu apply -auto-approve
 
-tf-destroy: ## Terraform Destroy phase
-	@terraform destroy -auto-approve
+tf-destroy: ## Tofu Destroy phase
+	@tofu destroy -auto-approve
 
 tf-format: ## Format TF Configuration File
-	@terraform fmt
+	@tofu fmt
 
 tf-validate: ## Validate TF Configuration File
-	@terraform validate
+	@tofu validate
 
 pre-commit-install: ## Install pre-commit Git Hooks
 	@pre-commit install

@@ -10,6 +10,9 @@ brew update
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 
+## Install OpenTofu
+brew install opentofu
+
 ## Install Terraform Local
 pip install --no-cache-dir terraform-local --upgrade
 
