@@ -15,6 +15,10 @@ With this program, there's no need to modify AWS Provider or S3 Backend configur
 
 It uses the [Terraform Override mechanism][terraform-override-mechanism-doc] and creates a temporary file `localstack_providers_override.tf` to configure the endpoints for the AWS provider section. The endpoints for all services are configured to point to the LocalStack API (http://localhost:4566 by default).
 
+## [OpenTofu migration from Terraform][opentofu-migration-guide]
+
+
 <!-- Links-->
 [terraform-local-gh]: https://github.com/localstack/terraform-local
 [terraform-override-mechanism-doc]:https://developer.hashicorp.com/terraform/language/files/override
+[opentofu-migration-guide]: https://opentofu.org/docs/intro/migration/
