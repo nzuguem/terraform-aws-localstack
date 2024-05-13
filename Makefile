@@ -64,3 +64,8 @@ setup-env: ## Setup Environment
 
 clean-env: ## Stop Localstack
 	@docker compose -f compose.localstack.yml down
+
+switch-tofu: ## Switch To OpenTofu Context
+	@git switch tofu
+	@$(MAKE) clean-env
+	@$(MAKE) setup-env

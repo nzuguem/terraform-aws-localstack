@@ -3,6 +3,8 @@
 Click the button below to start a new development environment: \
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/nzuguem/terraform-aws-localstack)
 
+> ℹ️ To switch to an OpenTofu context, execute the `make switch-tofu` command from the Terraform context (main branch).
+
 ## Illustration
 ![Terraform Localstack](doc/images/tf-localstack.png)
 
