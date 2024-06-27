@@ -7,6 +7,7 @@ output "test_secret_arn" {
 }
 
 output "test_secret_account_id" {
+  # TF 1.8 : Provider-defined functions
   value = provider::aws::arn_parse(data.aws_secretsmanager_secret.test_secret.arn).account_id
 }
 

@@ -1,13 +1,19 @@
+variable "create_instance" {
+  description = "Whether to create a instance."
+  type        = bool
+  default     = false
+}
+
 variable "ami" {
   type    = string
   default = "ami-00232bbfe70330a10"
 }
 
 variable "instance_type" {
-  type    = string
-  default = ""
+  type = string
   validation {
-    condition     = var.instance_type != ""
+    # TF 1.9 : Cross-object referencing for input variable validations
+    condition     = var.instance_type != "" && var.create_instance
     error_message = "Instance Type is mandatory"
   }
 }
