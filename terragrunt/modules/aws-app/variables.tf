@@ -11,11 +11,6 @@ variable "ami" {
 
 variable "instance_type" {
   type = string
-  validation {
-    # TF 1.9 : Cross-object referencing for input variable validations
-    condition     = var.instance_type != "" && var.create_instance
-    error_message = "Instance Type is mandatory"
-  }
 }
 
 variable "users" {
@@ -45,6 +40,5 @@ variable "sg_settings" {
 }
 
 variable "env_name" {
-  type    = string
-  default = "sandbox"
+  type = string
 }

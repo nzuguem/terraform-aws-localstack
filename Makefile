@@ -65,6 +65,13 @@ setup-env: ## Setup Environment
 clean-env: ## Stop Localstack
 	@docker compose -f compose.localstack.yml down
 
+tf-create-ws-prod: ## Create prod workspace
+	@terraform workspace new 'prod'
+
+tf-apply-prod: ## Apply resources for PROD
+	@terraform workspace select 'prod' -or-create
+	@terraform apply -auto-approve -var-file $$(terraform workspace show).tfvars
+
 switch-tofu: ## Switch To OpenTofu Context
 	@git switch tofu
 	@$(MAKE) clean-env

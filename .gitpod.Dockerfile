@@ -1,7 +1,9 @@
 FROM gitpod/workspace-full
 
-# Install TF
+# Install Tools
 RUN <<EOF
+
+
 set -e
 
 brew update
@@ -19,21 +21,14 @@ pip install --no-cache-dir terraform-local --upgrade
 ## Install TF Tools
 curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+brew install terragrunt
 
-EOF
-
-# Install AWS CLI
-RUN <<EOF
-
+## Install AWS CLI
 pip install --no-cache-dir awscli --upgrade
 ## Install AWS CLI Local
 pip install --no-cache-dir awscli-local --upgrade
 
-EOF
-
-# Install pre-commit
-RUN <<EOF
-
+## Install pre-commit
 pip install --no-cache-dir pre-commit --upgrade
 
 EOF
