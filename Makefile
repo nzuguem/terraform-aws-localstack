@@ -69,7 +69,7 @@ tf-create-ws-prod: ## Create prod workspace
 	@terraform workspace new 'prod'
 
 tf-apply-prod: ## Apply resources for PROD
-	@terraform workspace select 'prod' -or-create
+	@terraform workspace select  -or-create=true 'prod'
 	@terraform apply -auto-approve -var-file $$(terraform workspace show).tfvars
 
 switch-tofu: ## Switch To OpenTofu Context

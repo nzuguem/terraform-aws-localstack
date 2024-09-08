@@ -1,11 +1,7 @@
-locals {
-  # Asks Terragrunt to find the env. variables defined in env.hcl on environment aborescence
-  environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
-}
-
 # Asks Terragrunt to merge all env.hcl files found in the aborescence
 inputs = merge(
-  local.environment_vars.locals
+  read_terragrunt_config(find_in_parent_folders("env.hcl")).inputs,
+  read_terragrunt_config(find_in_parent_folders("global.hcl")).inputs
 )
 
 # Asks Terragrunt to generate the provider.tf file

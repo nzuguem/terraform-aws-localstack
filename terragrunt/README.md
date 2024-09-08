@@ -26,7 +26,9 @@ terragrunt apply
 
 - [Keep your Terragrunt Architecture DRY][terragrunt-dry-architecture]
 - [Migration de projets Terraform vers Terragrunt. (Jérôme Marchand)][migration-tf-to-tg-yt]
+- [Avec Terragrunt, ne répétez plus vos variables Terraform 358 fois][zwindler-terragrunt-blog-post]
 
 <!-- Links -->
 [terragrunt-dry-architecture]: https://terragrunt.gruntwork.io/docs/features/keep-your-terragrunt-architecture-dry/
 [migration-tf-to-tg-yt]: https://youtu.be/_5mBwYd9w-0?si=9UTIJ-_Dcp-TzB2z
+[zwindler-terragrunt-blog-post]: https://blog.zwindler.fr/2022/08/29/terragrunt-ne-repetez-plus-vos-variables-terraform/
