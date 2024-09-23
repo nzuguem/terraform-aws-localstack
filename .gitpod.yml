@@ -5,8 +5,6 @@ tasks:
   - name: TF setup and First provisioning
     command: |
       make start-localstack
-      make setup-tf-backend
-      make create-test-secret
       make tf-init
       make tf-apply
       
