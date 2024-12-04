@@ -52,6 +52,20 @@ data "aws_secretsmanager_secret" "test_secret" {
   name = "Test"
 }
 
+# TF 1.10 : Ephemeral resource
+# https://developer.hashicorp.com/terraform/language/resources/ephemeral
+# https://blog.stephane-robert.info/post/terraform-110/
+
+# For the moment I find it ideal for configuring providers / connection / provisioning blocks
+ephemeral "aws_secretsmanager_secret_version" "credentials" {
+  secret_id = data.aws_secretsmanager_secret.test_secret.id
+}
+
+# Unlike block ephemeral, block data is persisted in the State.
+data "aws_secretsmanager_secret_version" "credentials_bad" {
+  secret_id = data.aws_secretsmanager_secret.test_secret.id
+}
+
 module "iam_user" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-user"
   version                       = "~> 5.37.2"

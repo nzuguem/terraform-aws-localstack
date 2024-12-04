@@ -36,3 +36,12 @@ provider "aws" {
     }
   }
 }
+
+provider "postgresql" {
+  host            = "127.0.0.1"
+  port            = 5432
+  database        = "postgres"
+  username        = local.credentials["user"]
+  password        = local.credentials["password"]
+  connect_timeout = 15
+}

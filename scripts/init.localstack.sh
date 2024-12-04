@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 echo "Create bucket for TF State Backend..."
 awslocal s3 mb s3://terraform-state \
 	--region eu-west-3

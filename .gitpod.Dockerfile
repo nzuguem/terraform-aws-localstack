@@ -7,6 +7,7 @@ RUN <<EOF
 set -e
 
 brew update
+pip install --upgrade pip
 
 ## Install Terraform
 brew tap hashicorp/tap
