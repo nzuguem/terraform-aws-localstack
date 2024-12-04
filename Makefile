@@ -45,6 +45,8 @@ tf-apply-prod: ## Apply resources for PROD
 	@terraform apply -auto-approve -var-file $$(terraform workspace show).tfvars
 
 switch-tofu: ## Switch To OpenTofu Context
+	@rm -rf .terraform/ || true
+	@rm .terraform.lock.hcl || true
 	@git switch tofu
 	@$(MAKE) clean-env
 	@$(MAKE) setup-env
