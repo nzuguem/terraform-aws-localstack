@@ -64,3 +64,10 @@ setup-env: ## Setup Environment
 
 clean-env: ## Stop Localstack
 	@docker compose -f compose.localstack.yml down
+
+switch-terraform: ## Switch To Terrform Context
+	@rm -rf .terraform/ || true
+	@rm .terraform.lock.hcl || true
+	@git switch main
+	@$(MAKE) clean-env
+	@$(MAKE) setup-env
