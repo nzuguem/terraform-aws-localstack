@@ -37,3 +37,9 @@ variable "sg_settings" {
     }
   ]
 }
+
+variable "passphrase_encryption" {
+  type      = string
+  default   = "hard-passphrase-try-to-find"
+  sensitive = true
+}

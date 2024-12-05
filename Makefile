@@ -15,6 +15,11 @@ create-test-secret: ## Create Test Secret
 	--region eu-west-3 \
 	--endpoint http://localhost:4566 > /dev/null 2>&1
 
+create-kms-key: ## Create KMS Key
+	@aws kms create-key \
+	--region eu-west-3 \
+	--endpoint http://localhost:4566
+
 create-dynamodb-tf-state-locking: ## Create DynamoDB Table for TF State Locking
 	@aws dynamodb create-table \
     --table-name terraform-state \

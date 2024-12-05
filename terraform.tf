@@ -22,6 +22,40 @@ terraform {
     }
   }
 
+  encryption {
+    # Specifies the key provider for the encryption, can be PBKDF2, AWS KMS, GCP KMS, orOpenBao
+    key_provider "pbkdf2" "migration_key" {
+      passphrase    = var.passphrase_encryption
+      key_length    = 32
+      salt_length   = 16
+      hash_function = "sha256"
+    }
+
+    # key_provider "aws_kms" "kms_key" {
+    #  kms_key_id = ""
+    # key_spec   = "AES_256"
+    # region     = "eu-west-3"
+    #}
+
+    # The encryption method to be used, currently the option is AES-GCM which permits 16, 24, and 32-byte keys
+    method "aes_gcm" "secure_method" {
+      keys = key_provider.pbkdf2.migration_key
+    }
+
+    # method "aes_gcm" "secure_method_aws_kms" {
+    #  keys = key_provider.pbkdf2.migration_key
+    #}
+
+    # Here you specify the encryption method and a fallback option
+    state {
+      method = method.aes_gcm.secure_method
+    }
+
+    plan {
+      method = method.aes_gcm.secure_method
+    }
+  }
+
   # GitHub Remote Backend -> https://tfstate.dev/
   # export TF_HTTP_PASSWORD=<your-github-token> or terraform init -backend-config="password=<your-github-token>"
   /*   backend "http" {
