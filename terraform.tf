@@ -15,15 +15,18 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "terraform-state"
-    key            = "terraform.tfstate"
-    region         = "eu-west-3"
-    dynamodb_table = "terraform-state"
+    bucket = "terraform-state"
+    key    = "terraform.tfstate"
+    region = "eu-west-3"
+    # TF 1.10.x
+    # https://developer.hashicorp.com/terraform/language/upgrade-guides#s3-native-state-locking
+    # https://bacchi.org/posts/terraform-s3-backend-native-state-locks/
+    # https://aws.amazon.com/fr/about-aws/whats-new/2024/08/amazon-s3-conditional-writes/
+    use_lockfile = true
     # https://github.com/localstack/localstack/issues/3982#issuecomment-838121468
     force_path_style = true
     endpoints = {
-      s3       = "http://localhost:4566"
-      dynamodb = "http://localhost:4566"
+      s3 = "http://localhost:4566"
     }
   }
 
